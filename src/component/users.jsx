@@ -38,6 +38,7 @@ const Users = () => {
               <th scope="col">Качества</th>
               <th scope="col">Профессия</th>
               <th scope="col">Встретились, раз</th>
+              {/* <th scope="col">test</th> */}
               <th scope="col">оценка</th>
               <th scope="col">delete</th>
             </tr>
