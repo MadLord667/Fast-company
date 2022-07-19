@@ -1,13 +1,9 @@
-import React, { useState } from "react";
-import api from "../api";
-import SearchStatus from "./components/searchStatus";
+import React from "react";
+import User from "./user";
 
-const Users = ({ users, ...rest }) => {
+const Users = ({ users, handleDelete }) => {
   return (
     <>
-      {/* Заголовок ============================================ */}
-      <h1>{<SearchStatus />}</h1>
-      {/* Таблица ============================================ */}
       {users.length !== 0 ? (
         <table className="table">
           <thead>
@@ -22,39 +18,9 @@ const Users = ({ users, ...rest }) => {
             </tr>
           </thead>
           <tbody>
-            {users.map((user) => {
-              return (
-                <tr key={user._id}>
-                  <td>{user.name}</td>
-
-                  <td>
-                    {user.qualities.map((qyalit) => (
-                      <span
-                        className={`badge text-bg-${qyalit.color} m-1`}
-                        key={qyalit._id}
-                      >
-                        {qyalit.name}
-                      </span>
-                    ))}
-                  </td>
-
-                  <td>{user.profession.name}</td>
-
-                  <td>{user.completedMeetings}</td>
-
-                  <td>{user.rate}</td>
-
-                  <td>
-                    <button
-                      onClick={() => handleDelete(user._id)}
-                      className="btn btn-danger"
-                    >
-                      Delete
-                    </button>
-                  </td>
-                </tr>
-              );
-            })}
+            {users.map((user) => (
+              <User key={user._id} {...user} handleDelete={handleDelete} />
+            ))}
           </tbody>
         </table>
       ) : (
@@ -63,6 +29,8 @@ const Users = ({ users, ...rest }) => {
     </>
   );
 };
+
+export default Users;
 
 // ================================================================
 

@@ -1,7 +1,7 @@
-import React, { useState } from "react";
+import React from "react";
 
 const SearchStatus = ({ length }) => {
-  const [users, setUsers] = useState(api.users.fetchAll());
+  // const { length } = props  //  аналог записи ({length})
 
   const headerStateChanges = (number) => {
     // Изменения состояния заголовка
@@ -11,22 +11,26 @@ const SearchStatus = ({ length }) => {
     return " человек тусанёт";
   };
 
-  const headerСolor = (id) => {
-    // Изменения цвета заголовка
+  // const headerСolor = () => {
+  //   // Изменения цвета заголовка
 
-    let classes = "badge ";
-    return (classes += id.length === 0 ? "bg-danger" : "bg-primary");
-  };
+  //   let classes = "badge ";
+  //   return (classes += length === 0 ? "bg-danger" : "bg-primary");
+  // };
+
+  return (
+    <>
+      <h1>
+        <span className={"badge" + (length > 0 ? "bg-primary" : "bg-danger")}>
+          {/* Изменения цвета заголовка, в связи с изменением состояния */}
+
+          {length > 0
+            ? `${length + headerStateChanges(length)} с тобой сегодня`
+            : "Никто с тобой не тусанёт"}
+        </span>
+      </h1>
+    </>
+  );
 };
-
-return (
-  <>
-    <span className={headerСolor()}>
-      {users.length > 0
-        ? `${users.length + headerStateChanges(users.length)} с тобой сегодня`
-        : "Никто с тобой не тусанёт"}
-    </span>
-  </>
-);
 
 export default SearchStatus;
