@@ -1,17 +1,16 @@
 import React from "react";
 import ReactDom from "react-dom";
 import "bootstrap/dist/css/bootstrap.css";
-import Users from "./component/users";
-import "./index.css";
-import reportWebVitals from "./reportWebVitals";
+import App from "./App";
+// import "./index.css";
 
-// const root = ReactDom.createRoot(document.getElementById("root"));
-// root.render(
-ReactDom.render(
-  <React.StrictMode>
-    <Users />
-  </React.StrictMode>,
-  document.getElementById("root")
-);
+ReactDom.render(<App />, document.getElementById("root"));
 
-reportWebVitals();
+// =================================
+
+// ReactDom.render(
+//   <React.StrictMode>
+//     <App />
+//   </React.StrictMode>,
+//   document.getElementById("root")
+// );
