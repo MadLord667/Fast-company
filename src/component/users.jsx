@@ -1,7 +1,7 @@
 import React from "react";
 import User from "./user";
 
-const Users = ({ users, handleDelete }) => {
+const Users = ({ users, handleDelete, ...rest }) => {
   return (
     <>
       {users.length !== 0 ? (
@@ -19,7 +19,12 @@ const Users = ({ users, handleDelete }) => {
           </thead>
           <tbody>
             {users.map((user) => (
-              <User key={user._id} {...user} handleDelete={handleDelete} />
+              <User
+                key={user._id}
+                {...user}
+                handleDelete={handleDelete}
+                // {...rest}
+              />
             ))}
           </tbody>
         </table>
@@ -32,7 +37,7 @@ const Users = ({ users, handleDelete }) => {
 
 export default Users;
 
-// ================================================================
+// ===================================
 
 // const Users = () => {
 //   const [users, setUsers] = useState(api.users.fetchAll());

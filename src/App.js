@@ -10,12 +10,26 @@ function App() {
     console.log(userId);
     setUsers(users.filter((user) => user._id !== userId));
   }; // удаление
-  const handleToggleBookMark = (id) => {}; // отмета переключения закладки
+  const handleToggleBookMark = (id) => {
+    setUsers(
+      users.map((user) => {
+        if (user._id === id) {
+          return { ...user, bookmark: !user.bookmark };
+        }
+        return user;
+      })
+    );
+  };
+
   return (
-    <>
+    <div>
       <SearchStatus length={users.length} />
-      <Users users={users} handleDelete={handleDelete} />
-    </>
+      <Users
+        users={users}
+        handleDelete={handleDelete}
+        onToggleBookMark={handleToggleBookMark}
+      />
+    </div>
   );
 }
 

@@ -21,7 +21,7 @@ const SearchStatus = ({ length }) => {
   return (
     <>
       <h1>
-        <span className={"badge" + (length > 0 ? "bg-primary" : "bg-danger")}>
+        <span className={"badge " + (length > 0 ? "bg-primary" : "bg-danger")}>
           {/* Изменения цвета заголовка, в связи с изменением состояния */}
 
           {length > 0
