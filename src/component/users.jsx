@@ -1,12 +1,14 @@
-import React from "react";
+import React, { useState } from "react";
 import Pagination from "./pagination";
 import User from "./user";
 
 const Users = ({ users, handleDelete, ...rest }) => {
   const count = users.length;
   const pageSize = 4;
+  const [currentPage, setCurrentPage] = useState(1);
   const handlePageChange = (pageIndex) => {
     console.log("page: ", pageIndex);
+    setCurrentPage(pageIndex);
   };
   return (
     <>
@@ -27,6 +29,7 @@ const Users = ({ users, handleDelete, ...rest }) => {
             {users.map((user) => (
               <User
                 key={user._id}
+                s
                 {...user}
                 handleDelete={handleDelete}
                 {...rest}
@@ -40,10 +43,9 @@ const Users = ({ users, handleDelete, ...rest }) => {
       <Pagination
         itemsCount={count}
         pageSize={pageSize}
+        currentPage={currentPage}
         onPageChange={handlePageChange}
       />
-      {/* 1, 2, 3 */}
-      {/* users/pageSize */}
     </>
   );
 };
