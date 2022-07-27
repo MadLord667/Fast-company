@@ -2,15 +2,23 @@ import React, { useState } from "react";
 import Pagination from "./pagination";
 import User from "./user";
 import { paginate } from "./utils/paginate";
+import GroupList from "./groupList";
+import api from "../api";
 
 const Users = ({ users, handleDelete, ...rest }) => {
     const count = users.length;
     const pageSize = 4;
     const [currentPage, setCurrentPage] = useState(1);
+    const [professions] = useState(api.professions.fetchAll());
     const handlePageChange = (pageIndex) => {
         console.log("page: ", pageIndex);
         setCurrentPage(pageIndex);
     };
+
+    const handleProfessionSelect = (params) => {
+        console.log(params);
+    };
+    console.log(professions);
 
     // const paginate = (items, pageNumber, pageSize) => {
     //   const startIndex = (pageNumber - 1) * pageSize;
@@ -20,6 +28,10 @@ const Users = ({ users, handleDelete, ...rest }) => {
     const userCrop = paginate(users, currentPage, pageSize);
     return (
         <>
+            <GroupList
+                items={professions}
+                onItemSelect={handleProfessionSelect}
+            />
             {count !== 0 ? (
                 <table className="table">
                     <thead>

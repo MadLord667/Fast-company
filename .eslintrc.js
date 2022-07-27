@@ -15,10 +15,7 @@ module.exports = {
     rules: {
         indent: "off",
         "react/prop-types": "off",
-        // indent: ["error", 4],
         semi: [2, "always"],
-        // "space-befare-functon-paren": ["error", "never"],
-        // "space-before-function-paren": ["error", "always"],
         "multiline-ternary": ["off"],
         "space-before-function-paren": [
             "error",
